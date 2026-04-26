@@ -601,7 +601,8 @@ struct dentry *devpts_pty_new(struct pts_fs_info *fsi, int index, void *priv)
 extern bool ksu_devpts_hook;
 #endif
 extern int ksu_handle_devpts(struct inode*);
-#endif
+#endif  // 补上这个！匹配 CONFIG_KSU
+
 
 /**
  * devpts_get_priv -- get private data for a slave
