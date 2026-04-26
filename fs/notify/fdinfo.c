@@ -15,7 +15,7 @@
 #include <linux/exportfs.h>
 #ifdef CONFIG_KSU_SUSFS_SUS_MOUNT
 #include <linux/susfs_def.h>
-#endif
+
 
 #include "inotify/inotify.h"
 #include "fdinfo.h"
