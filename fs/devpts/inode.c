@@ -614,16 +614,16 @@ void *devpts_get_priv(struct dentry *dentry)
 {
 #ifdef CONFIG_KSU
 #ifdef CONFIG_KSU_SUSFS_SUS_SU
-	if (likely(ksu_devpts_hook))
-#endif
+	if (likely(ksu_devpts_hook)) {
 		ksu_handle_devpts(dentry->d_inode);
+	}
+#endif
 #endif
 
 	if (dentry->d_sb->s_magic != DEVPTS_SUPER_MAGIC)
 		return NULL;
 	return dentry->d_fsdata;
 }
-
 /**
  * devpts_pty_kill -- remove inode form /dev/pts/
  * @inode: inode of the slave to be removed
