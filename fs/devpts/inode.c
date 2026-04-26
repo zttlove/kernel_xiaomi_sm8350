@@ -597,11 +597,15 @@ struct dentry *devpts_pty_new(struct pts_fs_info *fsi, int index, void *priv)
 }
 
 #ifdef CONFIG_KSU
-#ifdef CONFIG_KSU_SUSFS_SUS_SU
-extern bool ksu_devpts_hook;
+    // 这部分代码仅在 CONFIG_KSU 被定义时编译
+    #ifdef CONFIG_KSU_SUSFS_SUS_SU
+        // 这部分代码仅在 CONFIG_KSU_SUSFS_SUS_SU 也被定义时编译
+        extern bool ksu_devpts_hook;
+    #endif
+    
+    // ksu_handle_devpts 只依赖于 CONFIG_KSU
+    extern int ksu_handle_devpts(struct inode*);
 #endif
-extern int ksu_handle_devpts(struct inode*);
-#endif  // 补上这个！匹配 CONFIG_KSU
 
 
 /**
